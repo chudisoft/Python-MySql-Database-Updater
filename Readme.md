@@ -2,23 +2,23 @@
 
 ## Description
 
-Python-MySql-Database-Updater is a dynamic and efficient Python script designed for generating and inserting fake data into a MySQL database. This tool is instrumental in development environments where there is a necessity to test database-related functionalities without real data. It seamlessly detects table structures and automatically adheres to data types and key constraints, maintaining the integrity and practicality of the fake data.
+The Python-MySQL Database Updater is a sophisticated Python utility tailored to automate the process of transforming and updating the structure of a MySQL database. Ideal for syncing development and production environments or applying version-controlled schema updates, this script ensures that the schema of one database (Database A) is altered to match the schema of another (Database B). It handles table and column renaming, data type modifications, and can apply NOT NULL constraints and default values where specified.
 
 ## How it Works
 
-The script establishes a connection with the specified MySQL database, traverses through its tables, and astutely fabricates data in alignment with each table's schema. It can discern and handle a variety of column types such as INT, VARCHAR, DATE, ENUM, YEAR, DECIMAL, BOOLEAN, and TEXT. For columns named 'Name', 'Email', or 'Username', it guarantees the generation of unique values. Additionally, it adeptly preserves foreign key relationships by referencing valid data from associated tables, thus upholding the relational integrity of the database.
+Upon execution, the script connects to two specified MySQL databases: the source (Database A) and the target (Database B). It examines the structure of both, carefully determining the differences. The tool then generates a series of SQL statements to modify Database A's schema—adding, altering, or dropping tables and columns to make it structurally identical to Database B. It wraps the SQL statements in a transaction, ensuring atomicity and consistency: all changes are applied without errors, or none at all.
 
 ## Key Features
 
-- **Schema-Aware Data Generation:** Intuitively detects table structures to produce appropriate and type-specific data.
-- **Unique Value Assurance:** Ensures the uniqueness of data in columns that typically require distinct values, like usernames, emails, and names.
-- **Foreign Key Constraint Compliance:** Maintains relational data integrity by selecting values from related tables for foreign key columns.
-- **Versatility:** Adapts to a range of database schemas, making it a flexible choice for different development and testing needs.
-- **Ideal for Professionals:** A crucial tool for developers, database administrators, and testers to populate MySQL databases with fake yet realistic data for app development, testing, or performance tuning.
+- **Automated Schema Transformation**: Compares two database schemas and generates SQL statements to transform one to match the other.
+- **Safe Operations**: Wraps changes in a transaction to ensure that all modifications are applied reliably.
+- **Intelligent Alterations**: Renames tables and columns where necessary, preserving data integrity.
+- **Column Property Awareness**: Respects column properties such as data types, NOT NULL constraints, and default values.
+- **Nullable Columns**: Correctly handles nullable columns, avoiding setting defaults where not required.
 
 ## Installation
 
-To get started with Python-MySql-Database-Updater, ensure you have Python on your system along with `mysql-connector-python` and `faker` libraries, which can be installed using pip:
+To get started with Python-MySql-Database-Updater, ensure you have Python on your system along with `mysql-connector-python` and `mysql-connector` libraries, which can be installed using pip:
 
 ```sh
-pip install mysql-connector-python faker
+pip install mysql-connector-python mysql-connector
